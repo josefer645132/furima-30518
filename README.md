@@ -1,24 +1,62 @@
-# README
+# DB 設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+| Column             | Type                | Options                 |
+|--------------------|---------------------|-------------------------|
+| email              | string              | null: false             |
+| password           | string              | null: false             |
+| name               | string              | null: false             |
+| birth              | string              | null: false             |
+| nickname           | text                | null: false             |
 
-* Ruby version
+### Association
 
-* System dependencies
+* has_many :items
+* has_many :Purchase_record
 
-* Configuration
+## items table
 
-* Database creation
+| Column                              | Type       | Options           |
+|-------------------------------------|------------|-------------------|
+| item_name                           | text       | null: false       |
+| category                            | text       | null: false       |
+| price                               | text       | null: false       |
+| seller                              | text       | null: false       |
+| user                                | references | foreign_key: true |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :users
+- has_one :Purchase_record
 
-* Services (job queues, cache servers, search engines, etc.)
+## Purchase_record table
 
-* Deployment instructions
+| Column      | Type       | Options           |
+|-------------|------------|-------------------|
+| buyer       | text       | null: false       |
+| item        | text       | null: false       |
+| time        | text       | null: false       |
+| items       | references | foreign_key: true |
+| users       | references | foreign_key: true |
 
-* ...
+### Association
+
+- belongs_to :users
+- belongs_to :items
+- has_one :Shipping_address
+
+
+## Shipping_address table
+
+| Column                | Type       | Options           |
+|-----------------------|------------|-------------------|
+| address               | text       | null: false       |
+| purchase_record       | references | foreign_key: true |
+
+
+### Association
+
+- belongs_to :Purchase_record
+
+
