@@ -16,26 +16,29 @@
 ### Association
 
 * has_many :items
-* has_many :Purchase_record
+* has_many :purchase_record
 
 ## items table
 
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
-| name                                | text       | null: false       |
+| name                                | string     | null: false       |
 | explanation                         | text       | null: false       |
 | category                            | string     | null: false       |
 | status                              | string     | null: false       |
-| price                               | text       | null: false       |
+| shipping_cost                       | string     | null: false       |
+| delivery_area                       | string     | null: false       |
+| days_to_delivery                    | string     | null: false       |
+| price                               | integer    | null: false       |
 | seller                              | text       | null: false       |
 | user                                | references | foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_one :Purchase_record
+- has_one :purchase_record
 
-## Purchase_record table
+## purchase_records table
 
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
@@ -46,10 +49,10 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :Shipping_address
+- has_one :shipping_address
 
 
-## Shipping_address table
+## shipping_address table
 
 | Column                | Type       | Options           |
 |-----------------------|------------|-------------------|
@@ -59,6 +62,6 @@
 
 ### Association
 
-- belongs_to :Purchase_record
+- belongs_to :purchase_record
 
 
