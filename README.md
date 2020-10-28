@@ -8,15 +8,15 @@
 | encrypted_password     | string              | null: false             |
 | family_name            | string              | null: false             |
 | first_name             | string              | null: false             |
-| family_name(フリガナ)   | string              | null: false             |
-| first_name(フリガナ)    | string              | null: false             |
+| family_name(frigana)   | string              | null: false             |
+| first_name(frigana)    | string              | null: false             |
 | birthday               | date                | null: false             |
 | nickname               | string              | null: false             |
 
 ### Association
 
 * has_many :items
-* has_many :purchase_record
+* has_many :purchase_records
 
 ## items table
 
@@ -55,12 +55,12 @@
 
 | Column                | Type       | Options           |
 |-----------------------|------------|-------------------|
-| postal_code           | integer    | null: false       |
-| prefectures           | integer    | null: false       |
-| municipality          | integer    | null: false       |
-| address               | integer    | null: false       |
-| building_name         | integer    | null: false       |
-| phone_number          | integer    | null: false       |
+| postal_code           | string     | null: false       |
+| prefectures_id        | integer    | null: false       |
+| municipality          | string     | null: false       |
+| address               | string     | null: false       |
+| building_name         | string     |                   |
+| phone_number          | string     | null: false       |
 | purchase_record       | references | foreign_key: true |
 
 
