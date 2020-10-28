@@ -5,13 +5,13 @@
 | Column                 | Type                | Options                 |
 |--------------------    |---------------------|-------------------------|
 | email                  | string              | null: false             |
-| password               | string              | null: false             |
+| encrypted_password     | string              | null: false             |
 | family_name            | string              | null: false             |
 | first_name             | string              | null: false             |
 | family_name(フリガナ)   | string              | null: false             |
 | first_name(フリガナ)    | string              | null: false             |
-| date                   | string              | null: false             |
-| nickname               | text                | null: false             |
+| birthday               | date                | null: false             |
+| nickname               | string              | null: false             |
 
 ### Association
 
@@ -24,13 +24,12 @@
 |-------------------------------------|------------|-------------------|
 | name                                | string     | null: false       |
 | explanation                         | text       | null: false       |
-| category                            | string     | null: false       |
-| status                              | string     | null: false       |
-| shipping_cost                       | string     | null: false       |
-| delivery_area                       | string     | null: false       |
-| days_to_delivery                    | string     | null: false       |
-| price                               | integer    | null: false       |
-| seller                              | text       | null: false       |
+| category_id                         | integer    | null: false       |
+| status_id                           | integer    | null: false       |
+| shipping_cost_id                    | integer    | null: false       |
+| delivery_area_id                    | integer    | null: false       |
+| days_to_delivery_id                 | integer    | null: false       |
+| price_id                            | integer    | null: false       |
 | user                                | references | foreign_key: true |
 
 ### Association
@@ -56,8 +55,14 @@
 
 | Column                | Type       | Options           |
 |-----------------------|------------|-------------------|
-| address               | text       | null: false       |
+| postal_code           | integer    | null: false       |
+| prefectures           | integer    | null: false       |
+| municipality          | integer    | null: false       |
+| address               | integer    | null: false       |
+| building_name         | integer    | null: false       |
+| phone_number          | integer    | null: false       |
 | purchase_record       | references | foreign_key: true |
+
 
 
 ### Association
