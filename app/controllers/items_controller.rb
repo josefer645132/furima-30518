@@ -3,17 +3,11 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
-  def new
-    @item = Item.new
-  end
-
   def create
-    @item = Item.new(item_params)
+    binding.pry
+    Item.create(item_params)
   end
 
-  def destroy
-    item = Item.find(params[:id])
-    item.destroy
-    redirect_to root_path
-  end
+
+
 end
