@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
+      
       render :new
     end
   end
@@ -19,11 +20,10 @@ class ItemsController < ApplicationController
 
 
   def item_params
-    params.require(:item).permit(:name, :explantion, :category_id, :status_id, :shipping_cost_id, :delivery_area_id, :days_to_delivery_id, :price_id, :user_id)
+    params.require(:item).permit(:image, :name, :explanation, :category_id, :status_id, :shipping_cost_id, :delivery_area_id, :days_to_delivery_id, :price).merge(user_id: current_user.id)
   end
 
-  
-  
+ 
   
   def message_params
     params.require(:message).permit(:content, :image).merge(user_id: current_user.id)

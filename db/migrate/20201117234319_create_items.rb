@@ -1,7 +1,7 @@
 class CreateItems < ActiveRecord::Migration[6.0]
   def change
     create_table :items do |t|
-
+      t.text    :image
       t.string  :name, null: false
       t.text    :explanation, null: false
       t.integer :category_id, null: false
@@ -9,7 +9,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :shipping_cost_id, null: false
       t.integer :delivery_area_id, null: false
       t.integer :days_to_delivery_id, null: false
-      t.integer :price_id, null: false
+      t.integer :price, null: false
       t.references :user, foreign_key: true
 
       t.timestamps
