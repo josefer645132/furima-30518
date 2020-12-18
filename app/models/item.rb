@@ -15,18 +15,22 @@ class Item < ApplicationRecord
 
   with_options presence: true do 
   validates :image
-  validates :name ,length: { maximum: 40, message: 'は40文字以入力してください。' }
-  validates :explanation ,length: { maximum: 1000, message: 'は1000文字以入力してください。' }
+  validates :name ,length: { maximum: 40, message: 'は40文字以下で入力してください' }
+  validates :explanation ,length: { maximum: 1000, message: 'は1000文字以下で入力してください' }
   validates :category_id ,numericality: { other_than: 0, message: 'can’t be blank' } 
   validates :status_id ,numericality: { other_than: 0, message: 'can’t be blank' } 
   validates :shipping_cost_id ,numericality: { other_than: 0, message: 'can’t be blank' } 
   validates :delivery_area_id ,numericality: { other_than: 0, message: 'can’t be blank' } 
   validates :days_to_delivery_id ,numericality: { other_than: 0, message: 'can’t be blank' } 
-  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: 'out of setting range' }
+  validates :price, numericality: { with: /\A[0-9]+\z/, message: 'half-width number' }
   
   end
+  validates_inclusion_of :price, in: 300..9999999, message: 'out of setting range'
+ end
+  
+ 
 
-end
+
 
 
 
