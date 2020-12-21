@@ -3,11 +3,12 @@ class ItemsController < ApplicationController
   
   
   def index
-    #@items = Item.all
+    @items = Item.all
   end
 
   def new
     @item = Item.new
+    
   end
  
   def create
@@ -27,11 +28,10 @@ class ItemsController < ApplicationController
 
  
   
-  def message_params
-    params.require(:message).permit(:content, :image).merge(user_id: current_user.id)
-  end
+  
   
   
  
 
 end
+
