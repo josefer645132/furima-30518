@@ -26,7 +26,9 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    
+    unless current_user == @item.user_id
+      render :edit
+    end
   end
 
   def update
