@@ -24,8 +24,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-　def edit
+  def edit
     @item = Item.find(params[:id])
+    # binding.pry
   end
 
   def update
@@ -42,11 +43,4 @@ class ItemsController < ApplicationController
   end
 
  
-  
-  
-  
-  
- 
-
-
-
+  end
