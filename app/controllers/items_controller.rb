@@ -25,8 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    
-    unless current_user == @item.user_id
+    unless user_signed_in? && @item.user_id == current_user.id
       render :edit
     end
   end
