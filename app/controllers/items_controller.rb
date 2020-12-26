@@ -25,19 +25,20 @@ class ItemsController < ApplicationController
 
   def edit
     unless @item.user_id == current_user.id
-      render :edit
+      redirect_to root_path
     end
   end
 
   def update
-   if @item.update(item_params)
+   if @item.user_id == current_user.id
+    if @item.update(item_params)
       redirect_to item_path(@item)
    else
       render :edit
     end
   end
+end
 
-  
  private
   def item_params
     params.require(:item).permit(:image, :name, :explanation, :category_id, :status_id, :shipping_cost_id, :delivery_area_id, :days_to_delivery_id, :price).merge(user_id: current_user.id)
